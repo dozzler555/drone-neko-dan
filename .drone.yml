@@ -1,0 +1,23 @@
+kind: pipeline
+type: docker
+name: linux-amd64
+
+platform:
+  arch: amd64
+  os: linux
+
+steps:
+- name: test
+  image: python:3.9.2-slim-buster
+  commands:
+  - sudo apt update -y
+  - sudo apt install git -y
+            
+  - git clone https://dozzler555:$GH_TOKEN@github.com/dozzler555/neko-dan source
+  - cd source
+  - export DEBIAN_FRONTEND=noninteractive
+  - sudo apt update -y
+  - apt -qq update && apt -qq install -y git wget pv jq wget python3-dev ffmpeg mediainfo
+  - pip3 install -r requirements.txt
+  - sudo apt-get install -y python3-pip
+  - bash run.sh
