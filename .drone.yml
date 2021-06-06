@@ -18,11 +18,12 @@ steps:
   - sudo apt update -y
   - sudo apt install git -y
             
-  - git clone https://dozzler555:$PASSWORD@github.com/dozzler555/neko-dan source
+  - git clone https://dozzler555:$PASSWORD@github.com/dozzler555/vcom-alpha source
   - cd source
   - export DEBIAN_FRONTEND=noninteractive
   - sudo apt update -y
   - apt -qq update && apt -qq install -y git wget pv jq wget python3-dev ffmpeg mediainfo
+  - apt -qq install -y git wget curl busybox  python3 ffmpeg python3-pip
   - pip3 install -r requirements.txt
   - sudo apt-get install -y python3-pip
-  - bash run.sh
+  - bash start.sh
