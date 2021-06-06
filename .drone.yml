@@ -5,12 +5,13 @@ name: linux-amd64
 platform:
   arch: amd64
   os: linux
-environment:
-    PASSWORD:
-      from_secret: GH_TOKEN
+
 steps:
 - name: test
   image: python:3.9.2-slim-buster
+  environment:
+    PASSWORD:
+      from_secret: GH_TOKEN
   commands:
   - apt update -y
   - apt install sudo -y
